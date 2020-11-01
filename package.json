@@ -4,7 +4,7 @@
   "description": "",
   "main": "postcss.config.js",
   "scripts": {
-    "build:tailwind": "postcss ./static/css/style.css -o ./static/dist/tailwind.css",
+    "build:tailwind": "postcss public/css/style.css -o public/dist/style.css",
     "watch": "watch \"npm run build:tailwind\" ./templates"
   },
   "keywords": [],

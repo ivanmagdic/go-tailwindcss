@@ -1,4 +1,7 @@
-# Simple Go Web Application built using Tailwind CSS framework
+## Go Sample App
+
+- Fiber framework
+- TailwindCSS
 
 ```
 npm run watch

@@ -1,19 +1,22 @@
 package main
 
 import (
-	"html/template"
-	"net/http"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html"
+	"github.com/ivanmagdic/go-tailwindcss/router"
+	"log"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("resource/views/welcome.html"))
-		tmpl.Execute(w, nil)
+	engine := html.New("./resource/views", ".html")
+
+	app := fiber.New(fiber.Config{
+		Views: engine,
 	})
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	app.Static("/", "./public/dist")
 
-	println("server is running on : http://localhost:8080")
-	
-	http.ListenAndServe(":8080", nil)
+	router.SetupRoutes(app)
+
+	log.Fatal(app.Listen(":3000"))
 }

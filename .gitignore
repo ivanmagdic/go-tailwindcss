@@ -1,2 +1,4 @@
 node_modules
-static/dist/*
+public/dist/*
+!public/dist/.keep
+.idea
